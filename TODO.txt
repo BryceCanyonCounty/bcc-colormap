@@ -1,0 +1,20 @@
+TODO
+
+- Add per-user custom colormap preferences.
+  - Keep admin-defined/default map colors as the server baseline.
+  - Allow each normal player or VIP user to override zone colors for their own client only.
+  - Store personal color preferences in the database per character/player identifier.
+  - Add a player-facing menu to edit their own map colors.
+  - Add config options to control who can use personal colors:
+    - everyone
+    - VIP only
+    - ACE permission/group based
+  - Make admin defaults apply when a player has no personal override.
+  - Add reset option so users can return to admin/default colors.
+
+Implementation direction:
+
+- Keep the current admin/global table as the default zone configuration.
+- Add a second table such as bcc_colormap_user_zones keyed by player or character identifier and zone hash.
+- When a client requests zones, return the admin defaults merged with that user's saved overrides.
+- Save user overrides separately so admin changes remain global and user changes remain personal.

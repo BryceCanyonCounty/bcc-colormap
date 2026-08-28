@@ -1,0 +1,3 @@
+CreateThread(function()
+    InitializeColormapDatabase()
+end)
